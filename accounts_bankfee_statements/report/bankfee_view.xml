@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="accounts_bankfee_header_format">
+
+        <t t-call="web.html_container">
+            <t t-if="not o" t-set="o" t-value="doc"/>
+            <t t-if="not company">
+                <!--  Multicompany  -->
+                <t t-if="company_id">
+                    <t t-set="company" t-value="company_id"/>
+                </t>
+                <t t-elif="o and 'company_id' in o">
+                    <t t-set="company" t-value="o.company_id.sudo()"/>
+                </t>
+                <t t-else="else">
+                    <t t-set="company" t-value="res_company"/>
+                </t>
+            </t>
+            <div class="header" t-att-style="report_header_style">
+                <div class="row">
+
+                </div>
+            </div>
+            <div class="col-9 text-right" t-field="company.report_header" name="moto">
+                <div t-field="company.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+            </div>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer o_background_footer">
+                <div>
+
+
+                    <div t-field="company.report_footer"/>
+                    <div t-if="report_type == 'pdf'" class="text-muted">
+
+                        <hr style="width:100%;" color="red"/>
+                        <div class="row">
+                            <div class="col-6" style="text-align:right;">
+                                Page:
+                                <span class="page"/>
+                                /
+                                <span class="topage"/>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="accounts_bankfee_body_format">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="accounts_bankfee_statements.accounts_bankfee_header_format">
+                    <div class="page">
+
+                        <table style="width:100%">
+                            <tr>
+                                <center><h5><t t-esc="o.name"/></h5></center>
+                            </tr>
+                            <tr>
+                                <th>From Date</th>
+                                <td> <t t-esc="o.from_date"/> </td>
+                                <th>company</th>
+                                <td> <t t-esc="o.company_id.name"/> </td>
+                            </tr>
+                            <tr>
+                                <th>To Date</th>
+                                <td> <t t-esc="o.to_date"/> </td>
+                                <td> </td>
+                            </tr>
+                        </table>
+
+
+                        <table style="border:1px solid black;width:100%">
+                            <tr>
+                                <th style="border:1px solid black;text-align:center">Source</th>
+                                <th style="border:1px solid black;text-align:center">Total Sales</th>
+                                <th style="border:1px solid black;text-align:center">Tax Amount</th>
+
+                            </tr>
+                            <t t-set="i" t-value="1"/>
+                            <t t-foreach="o.tax_return_lines" t-as="m">
+                                <tr>
+                                    <td style="border:1px solid black;text-align:center;"><t t-esc="m.source"/> </td>
+                                    <td style="border:1px solid black;text-align:right"><t t-esc="m.total_value"/></td>
+                                    <td style="border:1px solid black;text-align:right"><t t-esc="m.tax_amount"/> </td>
+                                </tr>
+
+                            </t>
+                            <tr>
+                                <th style="border:1px solid black;text-align:right">Total</th>
+                                <td style="border:1px solid black;text-align:right"><b><t t-esc="sum(o.tax_return_lines.mapped('total_value'))"/></b></td>
+                                <td style="border:1px solid black;text-align:right"><b><t t-esc="sum(o.tax_return_lines.mapped('tax_amount'))"/> </b></td>
+                            </tr>
+                        </table>
+                        <t t-set="i" t-value="1"/>
+
+
+
+
+
+                        <center><h5><t t-esc="o.account_move.name"/></h5></center>
+                    <table style="border:1px solid black;width:100%">
+                                    <tr>
+                                        <th style="border:1px solid black;text-align:center">Account</th>
+                                        <th style="border:1px solid black;text-align:center">Label</th>
+                                        <th style="border:1px solid black;text-align:center">Debit</th>
+                                        <th style="border:1px solid black;text-align:center">Credit</th>
+                                    </tr>
+                            <t t-foreach="o.account_move.line_ids" t-as="m">
+
+
+
+                                    <tr>
+                                        <td style="border:1px solid black"><t t-esc="m.account_id.name"/> </td>
+                                        <td style="border:1px solid black;text-align:right"><t t-esc="m.name"/></td>
+                                        <td style="border:1px solid black;text-align:right"><t t-esc="m.debit"/> </td>
+                                        <td style="border:1px solid black;text-align:right"><t t-esc="m.credit"/> </td>
+                                    </tr>
+                            </t>
+
+                        <tr>
+                            <th style="border:1px solid black;text-align:right">Total</th>
+                            <td style="border:1px solid black"> </td>
+                            <td style="border:1px solid black;text-align:right"><b><t t-esc="sum(o.account_move.line_ids.mapped('debit'))"/> </b></td>
+                            <td style="border:1px solid black;text-align:right"><b><t t-esc="sum(o.account_move.line_ids.mapped('credit'))"/> </b></td>
+                        </tr>
+                    </table>
+
+
+
+
+
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

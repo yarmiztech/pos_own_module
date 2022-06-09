@@ -1,0 +1,8 @@
+.pos-receipt-amount-arabic {
+    padding-left: 0em !important;
+}
+
+.pos-receipt .pos-receipt-right-align {
+    float: right;
+    padding-right: 7px; !important;
+}

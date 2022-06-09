@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+<!--    <template id="pos_network_printer_web_assets" name="My Web Assets"-->
+<!--            inherit_id="web.assets_frontend">-->
+<!--     <xpath expr="." position="inside">-->
+<!--       <script type="text/javascript"-->
+<!--               src="/pos_network_printer/static/lib/js/escpos.js"></script>-->
+
+<!--    </xpath>-->
+<!--  </template>-->
+    <template id="pos_network_printer_bankcash_assets" inherit_id="point_of_sale.assets">
+      <xpath expr="." position="inside">
+        <!-- lib -->
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/esc-pos-encoder.js"></script>-->
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/image.js"></script>-->
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/KitchenReciept.js"></script>-->
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/printers_odoo.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/cptable.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/cputils.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/deflate.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/JSESCPOSBuilder.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/lib/JSPrintManager.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/models.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/printer.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/chrome.js"></script>
+        <script type="text/javazscript" src="/pos_network_printer_bankcash/static/src/js/screens.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/multiprint.js"></script>
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/custom.js"></script>-->
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/cashsale.js"></script>
+        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/banksale.js"></script>
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/pos_default_payment_method.js"></script>-->
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/payment_screen.js"></script>-->
+<!--        <script type="text/javascript" src="/pos_network_printer_bankcash/static/src/js/StarwScreen.js"></script>-->
+        <link rel="stylesheet" href="/pos_network_printer_bankcash/static/src/css/chrome50.css"/>
+        <link rel="stylesheet" href="/pos_network_printer_bankcash/static/src/css/customer_facing_display.css"/>
+        <link rel="stylesheet" href="/pos_network_printer_bankcash/static/src/css/keyboard.css"/>
+        <link rel="stylesheet" href="/pos_network_printer_bankcash/static/src/css/pos.css"/>
+        <link rel="stylesheet" href="/pos_network_printer_bankcash/static/src/css/pos_receipts.css"/>
+          <script src="https://jsprintmanager.azurewebsites.net/scripts/zip.js"></script>
+    <script src="https://jsprintmanager.azurewebsites.net/scripts/zip-ext.js"></script>
+      </xpath>
+    </template>
+  </data>
+</odoo>

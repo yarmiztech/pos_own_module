@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<!--<t t-name="CustomButton" owl="1">-->
+<!--        <div class="control-button"  t-att-class="addedClasses">-->
+<!--            <i class="fa fa-print"></i>-->
+<!--            <span> </span>-->
+<!--            <span>Straw Receipt</span>-->
+<!--        </div>-->
+
+<!--</t>-->
+
+<t t-name="CashButton" owl="1">
+        <div class="control-button"  t-att-class="addedClasses" t-att-data="Cash" style="background-color:#dd565094 !important;" >
+            <i class="fa fa-print"></i>
+            <span> </span>
+            <span>Cash Sale</span>
+        </div>
+
+</t>
+
+
+    <t t-name="BankButton" owl="1">
+        <div class="control-button"  t-att-class="addedClasses" t-att-data="Bank" style="background-color:#6ec89b !important;">
+            <i class="fa fa-print"></i>
+            <span> </span>
+            <span>Bank Sale</span>
+        </div>
+    </t>
+</templates>

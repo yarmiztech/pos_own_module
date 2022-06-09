@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="accounts_paperformat_a4" model="report.paperformat">
+    <field name="name">A4 with Bank Fee</field>
+    <field name="default" eval="True" />
+    <field name="format">A4</field>
+    <field name="page_height">0</field>
+    <field name="page_width">0</field>
+    <field name="orientation">Portrait</field>
+<!--    <field name="margin_top">110</field>-->
+    <field name="margin_top">10</field>
+    <field name="margin_bottom">10</field>
+    <field name="margin_left">9</field>
+    <field name="margin_right">9</field>
+    <field name="header_line" eval="False" />
+<!--    <field name="header_spacing">105</field>-->
+    <field name="header_spacing">70</field>
+    <field name="dpi">90</field>
+	</record>
+
+    <report id="accounts_bankfee_report_id"
+      		model="tax.return"
+      		string="Tax Return"
+      		report_type="qweb-pdf"
+      		name="accounts_bankfee_statements.accounts_bankfee_body_format"
+      		file="accounts_bankfee_statements.accounts_bankfee_body_format"
+			paperformat="accounts_bankfee_statements.accounts_paperformat_a4"/>
+
+        <report id="bankfee_entry_report_id"
+      		model="bank.fee.statement"
+      		string="Bank fee Entry"
+      		report_type="qweb-pdf"
+      		name="accounts_bankfee_statements.bankfee_entry_body_format"
+      		file="accounts_bankfee_statements.bankfee_entry_body_format"
+			paperformat="accounts_bankfee_statements.accounts_paperformat_a4"/>
+
+</odoo>

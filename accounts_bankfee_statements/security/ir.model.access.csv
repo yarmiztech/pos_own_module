@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_bank_fee_statements,bank_fee_statement,model_bank_fee_statement,,1,1,1,1
+access_tax_return,bank_tax_return,model_tax_return,,1,1,1,1
+access_tax_return_line,tax_return_line,model_tax_return_line,,1,1,1,1
